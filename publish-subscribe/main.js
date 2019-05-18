@@ -1,17 +1,19 @@
 const MessageQueue = require('./messageQueue');
 const Subscriber = require('./subscriber');
+const Publisher = require('./publisher');
 
 const messageQueue = new MessageQueue();
-const subscriber = new Subscriber('btc service');
-const subscriber2 = new Subscriber('eth service');
+const btcSubscriber = new Subscriber('btc service', messageQueue);
+const ethSubscriber = new Subscriber('eth service', messageQueue);
+const publisher = new Publisher(messageQueue);
 
-messageQueue.subscribe('btc', subscriber.log);
-messageQueue.subscribe('eth', subscriber2.log);
+btcSubscriber.subscribe('btc');
+ethSubscriber.subscribe('eth');
 
-messageQueue.publish('eth', 1234);
-messageQueue.publish('btc', 11111);
+publisher.publish('eth', 1234);
+publisher.publish('btc', 11111);
 
-messageQueue.unsubscribe('eth', subscriber2.log);
+ethSubscriber.unsubscribe('eth');
 
-messageQueue.publish('btc', 100);
-messageQueue.publish('eth', 4321);
+publisher.publish('btc', 100);
+publisher.publish('eth', 4321);
