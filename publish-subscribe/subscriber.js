@@ -1,13 +1,11 @@
 class Subscriber {
-  constructor(messageQueue, topics) {
-    this.messageQueue = messageQueue;
-    topics.forEach((element) => {
-      this.messageQueue.subscribe(element, this.log);
-    })
+  constructor(name) {
+    this.name = name;
+    this.log = this.log.bind(this);
   }
 
-  log(data) {
-    console.log(data);
+  log (data) {
+    console.log(`${this.name}: ${data}`);
   }
 }
 
