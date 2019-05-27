@@ -1,11 +1,11 @@
 class Publisher {
-  constructor(messageQueue) {
-    this.messageQueue = messageQueue;
+  constructor(messageBroker) {
+    this.messageBroker = messageBroker;
     this.publish = this.publish.bind(this);
   }
 
   publish(topic, message) {
-    this.messageQueue.publish(topic, message);
+    this.messageBroker.publish(topic, message);
   }
 }
 

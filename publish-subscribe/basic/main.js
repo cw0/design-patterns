@@ -1,11 +1,11 @@
-const MessageQueue = require('./messageQueue');
+const MessageBroker = require('./MessageBroker');
 const Subscriber = require('./subscriber');
 const Publisher = require('./publisher');
 
-const messageQueue = new MessageQueue();
-const btcSubscriber = new Subscriber('btc service', messageQueue);
-const ethSubscriber = new Subscriber('eth service', messageQueue);
-const publisher = new Publisher(messageQueue);
+const messageBroker = new MessageBroker();
+const btcSubscriber = new Subscriber('btc service', messageBroker);
+const ethSubscriber = new Subscriber('eth service', messageBroker);
+const publisher = new Publisher(messageBroker);
 
 btcSubscriber.subscribe('btc');
 ethSubscriber.subscribe('eth');
