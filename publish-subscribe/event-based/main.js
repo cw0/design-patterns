@@ -1,6 +1,6 @@
-const Publisher = require('./publisher');
-const Subscriber = require('./subscriber');
 const EventEmitter = require('events');
+const Publisher = require('./Publisher');
+const Subscriber = require('./Subscriber');
 
 const eventBus = new EventEmitter();
 
@@ -10,11 +10,11 @@ const publisher = new Publisher(eventBus);
 
 const showOff = (topic) => (data) => {
   console.log(`${topic}: ${data}`);
-}
+};
 
 const showOffMore = (topic, data) => {
   console.log(`${topic}: ${data}`);
-}
+};
 
 ethSubscriber.subscribe('eth', showOffMore);
 btcSubscriber.subscribe('btc', console.log);
